@@ -5,6 +5,12 @@ struct PersistenceController {
     static let shared = PersistenceController()
 
     let container: NSPersistentContainer
+    
+    // Setup persistence for the preview so the data can be seen in the preview window.
+    static var preview: PersistenceController = {
+        let controller = PersistenceController()
+        return controller
+    }()
 
     init() {
         container = NSPersistentContainer(name: "ExampleDatabase")
