@@ -5,6 +5,6 @@
 //  Created by Stephen Sneed on 12/3/25.
 //
 
-struct MenuList : Decodable {
+struct MenuList: Decodable {
     let menu: [MenuItem]
 }

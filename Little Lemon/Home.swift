@@ -12,6 +12,12 @@ struct Home: View {
     let persistence = PersistenceController.shared
 
     var body: some View {
+        ZStack {
+            LittleLemonLogo().padding(10).frame(maxWidth: .infinity, alignment: .center)
+            //NavigationLink(destination: UserProfile()) {
+            Image("profile-image-placeholder").resizable().scaledToFit().clipShape(Circle()).frame(maxWidth: .infinity, alignment: .trailing).padding(.trailing, 15)
+            //}
+        }.frame(maxWidth: .infinity, maxHeight: 60)
         TabView {
             Menu()
                 .environment(\.managedObjectContext, persistence.container.viewContext)

@@ -17,24 +17,31 @@ struct DisplayDish: View {
     
     var body: some View {
         VStack {
+            /*
             AsyncImage(url: URL(string: dish.image ?? "")) { image in
                 image.resizable()
             } placeholder: {
                 ProgressView()
             }
-            .frame(width: 250, height: 250)
+            .frame(width: 100, height: 100)
+             */
+            Image(dish.image ?? "").resizable().frame(width: 100, height: 100)
             HStack {
-                Text("\(dish.title ?? "")")
-                    .padding([.top, .bottom], 7)
+                Text("\(dish.title ?? "")").font(.custom(
+                    "SanFranciscoText-Regular",
+                    fixedSize: 20)).foregroundStyle(Color.secondaryBlack).padding(.horizontal)
                 
                 Spacer()
                 
                 Text("$\(dish.price ?? "")")
-                    .monospaced()
-                    .font(.callout)
-            }
-            Text("\(dish.category ?? "")")
-            Text("\(dish.details ?? "")")
+                    .font(.custom(
+                        "SanFranciscoText-Regular",
+                        fixedSize: 20)).foregroundStyle(Color.secondaryBlack).padding(.horizontal)
+            }.padding()
+            //Text("\(dish.category ?? "")")
+            Text("\(dish.details ?? "")").font(.custom(
+                "SanFranciscoText-Regular",
+                fixedSize: 18)).foregroundStyle(Color.secondaryBlack).padding(.horizontal)
 
         }.contentShape(Rectangle()) // keep this code
     }
@@ -50,7 +57,8 @@ struct DisplayDish_Previews: PreviewProvider {
         let dish = Dish(context: context)
         dish.title = "Greek Salad"
         dish.price = "10"
-        dish.image = "https://github.com/Meta-Mobile-Developer-PC/Working-With-Data-API/blob/main/images/greekSalad.jpg?raw=true"
+        //dish.image = "https://github.com/Meta-Mobile-Developer-PC/Working-With-Data-API/blob/main/images/greekSalad.jpg?raw=true"
+        dish.image = "greeksalad"
         dish.category = "starters"
         dish.details = "The famous greek salad of crispy lettuce, peppers, olives, our Chicago."
         return dish

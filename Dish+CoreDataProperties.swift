@@ -58,10 +58,23 @@ extension Dish : Identifiable {
         do {
             guard let persistentStoreCoordinator = context.persistentStoreCoordinator else { return }
             try persistentStoreCoordinator.execute(deleteRequest, with: context)
-            //save(context)  Commented this out as it seems to cause issues with duplicate dishes.
+            //try? context.save()
 
         } catch let error as NSError {
             print(error.localizedDescription)
+        }
+    }
+    
+    class func createDishesFrom(menuItems:[MenuItem],
+                                _ context:NSManagedObjectContext) {
+        for menuItem in menuItems {
+            if !Dish.exists(title: menuItem.title, context)!{
+                let newMenuItem = Dish(context: context)
+                newMenuItem.title = menuItem.title
+                newMenuItem.price = menuItem.price
+                newMenuItem.image = menuItem.image
+                newMenuItem.category = menuItem.category
+                newMenuItem.details = menuItem.description            }
         }
     }
 }
