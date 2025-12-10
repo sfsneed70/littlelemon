@@ -182,7 +182,9 @@ struct CategoryButton: View {
                 searchCategory = category
             }
         }) {
-            Text(category)
+            Text(category).font(.custom(
+                "SanFranciscoText-Regular",
+                fixedSize: 16))
         }.padding().foregroundStyle(Color.secondaryBlack).background(category == searchCategory ? Color.primaryYellow : Color.secondaryWhite).clipShape(RoundedRectangle(cornerRadius: 20))
     }
 }
